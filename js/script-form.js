@@ -56,7 +56,7 @@ enter.addEventListener("click", function() {
 
       // display ticket
       var ticket = document.getElementById("ticket");
-      ticket.style.display = "inline-block";
+      ticket.style.visibility = "visible";
       ticket.classList.add("ticket-show");
    }
 
@@ -72,7 +72,7 @@ reset.addEventListener("click", function() {
 
    // hide ticket
    var ticket = document.getElementById("ticket");
-   ticket.style.display = "none";
+   ticket.style.visibility = "hidden";
    ticket.classList.remove("ticket-show");
 
 });

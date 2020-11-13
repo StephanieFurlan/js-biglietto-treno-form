@@ -13,16 +13,16 @@ function checkKm(km) {
    return false;
 }
 
+// button - Genera --> ticket calculation
 var enter = document.getElementById("enter");
 enter.addEventListener("click", function() {
 
+   // get values from inputs
    var name = document.getElementById("name").value;
-   document.getElementById("show-name").innerHTML = name;
-
-
    var km = document.getElementById("km").value;
    var age = document.getElementById("age").value;
 
+   // calculate ticket price
    var price = km * 0.21;
    var offer = "Standard";
 
@@ -34,19 +34,22 @@ enter.addEventListener("click", function() {
       offer = "Sconto Over 65 - 40%";
    }
 
-   document.getElementById("show-offer").innerHTML = offer;
-
-
+   // random CP Code and carriage
    document.getElementById("show-carrozza").innerHTML = Math.floor(Math.random() * 9) + 1;
-
    document.getElementById("show-codice-CP").innerHTML = Math.floor(Math.random() * 10000) + 90001;
 
+
+   // assign values
+   document.getElementById("show-name").innerHTML = name;
+   document.getElementById("show-offer").innerHTML = offer;
    document.getElementById("price").innerHTML = price.toFixed(2) + " €";
 
+
+   // change style of form
    var form = document.getElementById("form");
    form.classList.add("form-small");
 
-
+   // display ticket
    var ticket = document.getElementById("ticket");
    ticket.style.display = "inline-block";
    ticket.classList.add("ticket-show");

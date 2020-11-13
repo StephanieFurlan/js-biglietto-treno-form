@@ -1,18 +1,3 @@
-function checkAge(age) {
-   if (!isNaN(age) && age >= 0 && age <= 120 && age % 1 == 0) {
-      return true;
-   }
-   return false;
-}
-
-function checkKm(km) {
-   console.log(km);
-   if (!isNaN(km) && km >= 0) {
-      return true;
-   }
-   return false;
-}
-
 // button - Genera --> ticket calculation
 var enter = document.getElementById("enter");
 enter.addEventListener("click", function() {
@@ -22,47 +7,72 @@ enter.addEventListener("click", function() {
    var km = document.getElementById("km").value;
    var age = document.getElementById("age").value;
 
-   // calculate ticket price
-   var price = km * 0.21;
-   var offer = "Standard";
+   // check for empty values
+   var errorString = "";
+   var error = false;
 
-   if (age == "Minorenne") {
-      price *= (1 -  20 / 100);
-      offer = "Sconto Minorenne - 20%";
-   } else if (age == "Over 65") {
-      price *= (1 -  40 / 100);
-      offer = "Sconto Over 65 - 40%";
+   if (name == "") {
+      errorString += "Name: empty field!";
+      error = true;
    }
 
-   // random CP Code and carriage
-   document.getElementById("show-carrozza").innerHTML = Math.floor(Math.random() * 9) + 1;
-   document.getElementById("show-codice-CP").innerHTML = Math.floor(Math.random() * 10000) + 90001;
+   if (km == "") {
+      errorString += "Km: empty field!";
+      error = true;
+   }
 
 
-   // assign values
-   document.getElementById("show-name").innerHTML = name;
-   document.getElementById("show-offer").innerHTML = offer;
-   document.getElementById("price").innerHTML = price.toFixed(2) + " €";
+
+   if (error) {
+      alert("ERROR: " + errorString);
+   } else {
+      // calculate ticket price
+      var price = km * 0.21;
+      var offer = "Standard";
+
+      if (age == "Minorenne") {
+         price *= (1 -  20 / 100);
+         offer = "Sconto Minorenne - 20%";
+      } else if (age == "Over 65") {
+         price *= (1 -  40 / 100);
+         offer = "Sconto Over 65 - 40%";
+      }
 
 
-   // change style of form
-   var form = document.getElementById("form");
-   form.classList.add("form-small");
+      // random CP Code and carriage
+      document.getElementById("show-carrozza").innerHTML = Math.floor(Math.random() * 9) + 1;
+      document.getElementById("show-codice-CP").innerHTML = Math.floor(Math.random() * 10000) + 90001;
 
-   // display ticket
-   var ticket = document.getElementById("ticket");
-   ticket.style.display = "inline-block";
-   ticket.classList.add("ticket-show");
+
+      // assign values
+      document.getElementById("show-name").innerHTML = name;
+      document.getElementById("show-offer").innerHTML = offer;
+      document.getElementById("price").innerHTML = price.toFixed(2) + " €";
+
+
+      // change style of form
+      var form = document.getElementById("form");
+      form.classList.add("form-small");
+
+      // display ticket
+      var ticket = document.getElementById("ticket");
+      ticket.style.display = "inline-block";
+      ticket.classList.add("ticket-show");
+   }
+
 
 });
 
 var reset = document.getElementById("reset");
 reset.addEventListener("click", function() {
 
+   // change style of form
    var form = document.getElementById("form");
    form.classList.remove("form-small");
 
+   // hide ticket
    var ticket = document.getElementById("ticket");
    ticket.style.display = "none";
    ticket.classList.remove("ticket-show");
+
 });

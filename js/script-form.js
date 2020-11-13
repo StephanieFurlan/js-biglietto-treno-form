@@ -41,7 +41,7 @@ enter.addEventListener("click", function() {
 
    document.getElementById("show-codice-CP").innerHTML = Math.floor(Math.random() * 10000) + 90001;
 
-   document.getElementById("price").innerHTML = price + " E";
+   document.getElementById("price").innerHTML = price.toFixed(2) + " €";
 
    var form = document.getElementById("form");
    form.classList.add("form-small");

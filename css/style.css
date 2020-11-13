@@ -25,7 +25,7 @@ body {
 
 .form-small {
    width: calc(50% - 10px);
-   height: 600px;
+   height: 500px;
 }
 
 h2 {
@@ -69,7 +69,7 @@ hr {
 
 .ticket-show {
    padding: 20px;
-   height: 600px;
+   height: 500px;
    margin: 5px;
    background-color: #CC527A;
    border-radius: 20px;
@@ -98,10 +98,27 @@ button {
    font-weight: bold;
 }
 
-table {
+#ticket-info {
    width: 100%;
 }
 
-th, td {
+#ticket-info td, #ticket-info th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#ticket-info tr:nth-child(even){
+   background-color: #f2f2f2;
+}
+
+#ticket-info tr:hover {
+   background-color: #ddd;
+}
+
+#ticket-info th {
+  padding-top: 12px;
+  padding-bottom: 12px;
   text-align: left;
+  background-color: black;
+  color: white;
 }
